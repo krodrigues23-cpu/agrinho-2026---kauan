@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="pt-BR">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rural</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&amp;family=Work+Sans:wght@400;500;600&amp;display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Work Sans', sans-serif; overflow-x: hidden; }
+    h1, h2, h3 { font-family: 'Playfair Display', serif; }
+    .rainbow-bar { height: 5px; background: linear-gradient(90deg, #e74c3c, #f39c12, #f1c40f, #2ecc71, #3498db, #9b59b6, #e74c3c); }
+    .rainbow-text { background: linear-gradient(90deg, #e74c3c, #f39c12, #2ecc71, #3498db, #9b59b6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .parallax-wrap { position: relative; overflow: hidden; }
+    .parallax-img { position: absolute; inset: -20% 0; height: 140%; width: 100%; object-fit: cover; will-change: transform; }
+    .fade-up { opacity: 0; transform: translateY(60px); transition: opacity 1s cubic-bezier(.22,1,.36,1), transform 1s cubic-bezier(.22,1,.36,1); }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+    .fade-up:nth-child(2) { transition-delay: 0.15s; }
+    .fade-up:nth-child(3) { transition-delay: 0.3s; }
+    .content-card { transition: transform 0.4s ease, box-shadow 0.4s ease; }
+    .content-card:hover { transform: translateY(-6px) scale(1.01); box-shadow: 0 24px 48px rgba(0,0,0,0.12); }
+    .stats-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.6); z-index: 1; }
+    .wave-divider { display: block; width: 100%; height: auto; margin-top: -1px; }
+    .counter { font-variant-numeric: tabular-nums; }
+  </style>
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js" type="text/javascript"></script>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+  <script src="/_sdk/resizing_sdk.js" type="text/javascript"></script>
+ <script src="/_sdk/telemetry_sdk.js"></script></head>
+ <body data-template-id="__page-root" class="min-h-screen">
+  <div class="rainbow-bar"></div>
+  <header class="py-5 px-6">
+   <nav class="max-w-6xl mx-auto flex items-center justify-between">
+    <h1 data-template-id="site-name" class="canva-text text-2xl font-extrabold rainbow-text"></h1>
+    <p data-template-id="nav-tagline" class="canva-text text-sm hidden md:block"></p>
+   </nav>
+  </header><!-- Hero parallax -->
+  <section class="parallax-wrap" style="height: 520px;"><img data-template-id="hero-img" class="canva-image parallax-img" loading="lazy">
+   <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent flex items-end justify-center px-4 pb-20" style="z-index:2;">
+    <div class="text-center max-w-3xl fade-up">
+     <h2 data-template-id="hero-title" class="canva-text font-extrabold text-white drop-shadow-lg"></h2>
+     <p data-template-id="hero-subtitle" class="canva-text mt-4 text-white/90"></p>
+    </div>
+   </div>
+  </section><!-- Wave divider -->
+  <svg class="wave-divider" viewbox="0 0 1440 80" preserveaspectratio="none">
+   <path fill="#fffff0" d="M0,40 C360,80 720,0 1080,40 C1260,60 1380,50 1440,40 L1440,80 L0,80 Z" />
+  </svg>
+  <main><!-- Soy section -->
+   <section data-template-id="section-soy" class="canva-section py-20 px-6">
+    <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+     <div class="content-card bg-white rounded-2xl p-8 shadow-md fade-up">
+      <h2 data-template-id="soy-title" class="canva-text font-bold"></h2>
+      <p data-template-id="soy-text" class="canva-text mt-4 leading-relaxed"></p>
+     </div><img data-template-id="soy-img" class="canva-image w-full h-80 object-cover rounded-2xl shadow-xl fade-up" loading="lazy">
+    </div>
+   </section><!-- Parallax divider -->
+   <section class="parallax-wrap" style="height: 280px;"><img data-template-id="parallax-divider-img" class="canva-image parallax-img" loading="lazy">
+    <div class="absolute inset-0 bg-black/30" style="z-index:1;"></div>
+   </section><!-- Stats section -->
+   <svg class="wave-divider" viewbox="0 0 1440 80" preserveaspectratio="none" style="transform:rotate(180deg); margin-bottom:-1px;">
+    <path fill="#1a1a2e" d="M0,40 C360,80 720,0 1080,40 C1260,60 1380,50 1440,40 L1440,80 L0,80 Z" />
+   </svg>
+   <section class="parallax-wrap" style="min-height:280px; background:#1a1a2e;"><img data-template-id="stats-bg-img" class="canva-image parallax-img" loading="lazy">
+    <div class="stats-overlay"></div>
+    <div class="relative py-20 px-6" style="z-index:2;">
+     <div class="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 text-center fade-up" id="stats-grid">
+      <div>
+       <p data-template-id="stat-1-value" class="canva-text font-extrabold counter" data-target="154"></p>
+       <p data-template-id="stat-1-label" class="canva-text mt-1"></p>
+      </div>
+      <div>
+       <p data-template-id="stat-2-value" class="canva-text font-extrabold counter"></p>
+       <p data-template-id="stat-2-label" class="canva-text mt-1"></p>
+      </div>
+      <div>
+       <p data-template-id="stat-3-value" class="canva-text font-extrabold counter"></p>
+       <p data-template-id="stat-3-label" class="canva-text mt-1"></p>
+      </div>
+      <div>
+       <p data-template-id="stat-4-value" class="canva-text font-extrabold counter"></p>
+       <p data-template-id="stat-4-label" class="canva-text mt-1"></p>
+      </div>
+     </div>
+    </div>
+   </section>
+   <svg class="wave-divider" viewbox="0 0 1440 80" preserveaspectratio="none">
+    <path fill="#f0fff4" d="M0,40 C360,80 720,0 1080,40 C1260,60 1380,50 1440,40 L1440,80 L0,80 Z" />
+   </svg><!-- Sustainability -->
+   <section data-template-id="section-sustain" class="canva-section py-20 px-6">
+    <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center"><img data-template-id="sustain-img" class="canva-image w-full h-80 object-cover rounded-2xl shadow-xl fade-up order-2 md:order-1" loading="lazy">
+     <div class="content-card bg-white rounded-2xl p-8 shadow-md fade-up order-1 md:order-2">
+      <h2 data-template-id="sustain-title" class="canva-text font-bold"></h2>
+      <p data-template-id="sustain-text" class="canva-text mt-4 leading-relaxed"></p>
+     </div>
+    </div>
+   </section><!-- Technology -->
+   <section data-template-id="section-tech" class="canva-section py-20 px-6">
+    <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+     <div class="content-card bg-white rounded-2xl p-8 shadow-md fade-up">
+      <h2 data-template-id="tech-title" class="canva-text font-bold"></h2>
+      <p data-template-id="tech-text" class="canva-text mt-4 leading-relaxed"></p>
+     </div><img data-template-id="tech-img" class="canva-image w-full h-80 object-cover rounded-2xl shadow-xl fade-up" loading="lazy">
+    </div>
+   </section>
+  </main>
+  <footer data-template-id="footer" class="canva-footer py-10 px-6 text-center">
+   <p data-template-id="footer-text" class="canva-text"></p>
+  </footer>
+  <div class="rainbow-bar"></div>
+  <script src="/_sdk/editing_sdk.js"></script>
+  <script>
+    // Parallax on scroll
+    const parallaxImages = document.querySelectorAll('.parallax-img');
+    function updateParallax() {
+      const scrollY = window.scrollY;
+      parallaxImages.forEach(img => {
+        const rect = img.parentElement.getBoundingClientRect();
+        const speed = 0.3;
+        const offset = (rect.top + rect.height / 2 - window.innerHeight / 2) * speed;
+        img.style.transform = `translateY(${offset}px)`;
+      });
+    }
+    window.addEventListener('scroll', updateParallax, { passive: true });
+    updateParallax();
+
+    // Fade-up observer
+    const fadeObs = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('visible'); fadeObs.unobserve(e.target); }
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.fade-up').forEach(el => fadeObs.observe(el));
+
+    // Animated counters
+    let statsCounted = false;
+    const statsObs = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting && !statsCounted) {
+          statsCounted = true;
+          animateCounters();
+          statsObs.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.3 });
+    const statsGrid = document.getElementById('stats-grid');
+    if (statsGrid) statsObs.observe(statsGrid);
+
+    function animateCounters() {
+      const counters = [
+        { el: document.querySelector('[data-template-id="stat-1-value"]'), end: '154M ton', frames: ['0', '38M', '77M', '115M', '154M ton'] },
+        { el: document.querySelector('[data-template-id="stat-2-value"]'), end: '1º', frames: ['5º', '3º', '2º', '1º'] },
+        { el: document.querySelector('[data-template-id="stat-3-value"]'), end: '40M ha', frames: ['0', '10M', '20M', '30M', '40M ha'] },
+        { el: document.querySelector('[data-template-id="stat-4-value"]'), end: 'R$1T', frames: ['R$0', 'R$250B', 'R$500B', 'R$750B', 'R$1T'] }
+      ];
+      counters.forEach(c => {
+        if (!c.el) return;
+        let i = 0;
+        const interval = setInterval(() => {
+          c.el.textContent = c.frames[i];
+          i++;
+          if (i >= c.frames.length) clearInterval(interval);
+        }, 180);
+      });
+    }
+  </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a0572d562a9d64e7',t:'MTc4MDQxMDg0Nw=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
